@@ -33,6 +33,8 @@ public class YoutubeplayerModule extends KrollModule {
     
     private static final int REQ_START_STANDALONE_PLAYER = 1;
     private static final int REQ_RESOLVE_SERVICE_MISSING = 2;
+    
+    private String developerKey = null;
 
 	// Standard Debugging variables
 	private static final String TAG = "YoutubeplayerModule";
@@ -43,24 +45,31 @@ public class YoutubeplayerModule extends KrollModule {
 	public YoutubeplayerModule() {
 		super();
 	}
-
-	@Kroll.onAppCreate
+    
+    @Kroll.onAppCreate
 	public static void onAppCreate(TiApplication app) {
 		Log.d(TAG, "inside onAppCreate");
 		// put module init code that needs to run when the application is
 		// created
+    }
+
+	@Kroll.setProperty @Kroll.method
+	public void setDeveloperKey(String developerKey)
+	{
+		this.developerKey = developerKey;
 	}
 
 	// Methods
 	@Kroll.method
-	public void playVideo(String developerKey, String videoId) {
-		if (videoId == null || videoId.length() == 0) {
+	public void playVideo(String videoId) {
+        if(this.developerKey == null || this.developerKey.length() == 0)
+            Log.d(TAG, "Missing parameter developerKey.");
+		if (videoId == null || videoId.length() == 0)
 			return;
-		}
 
 		Activity activity = TiApplication.getAppRootOrCurrentActivity();
         
-        Intent intent = YouTubeStandalonePlayer.createVideoIntent(activity, developerKey, videoId, 0, true, false);
+        Intent intent = YouTubeStandalonePlayer.createVideoIntent(activity, this.developerKey, videoId, 0, true, false);
         
         if (intent != null) {
             if (canResolveIntent(intent)) {

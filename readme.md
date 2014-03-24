@@ -11,8 +11,11 @@ Android component that plays videos from YouTube. This module is focused on crea
 To access this module from JavaScript, you would do the following:
 ```javascript
 var youtubePlayer = require("titutorial.youtubeplayer");
+youtubePlayer.setDeveloperKey = 'abcdefghijklmnopq';
 ```
 The youtubeplayer variable is a reference to the Module object.
+
+TInformation on how to obtain a  developer key can be found on: https://developers.google.com/youtube/android/player/register
 
 ## Reference
 
@@ -76,7 +79,8 @@ win.open();
 
 ## Author
 
-Karthi Ponnusamy - karthi.nkl@gmail.com
+Timan Rebel
+based on the work of Karthi Ponnusamy - karthi.nkl@gmail.com
 
 ## License
 
