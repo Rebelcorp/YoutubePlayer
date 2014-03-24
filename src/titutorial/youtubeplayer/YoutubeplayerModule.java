@@ -33,7 +33,6 @@ public class YoutubeplayerModule extends KrollModule {
     
     private static final int REQ_START_STANDALONE_PLAYER = 1;
     private static final int REQ_RESOLVE_SERVICE_MISSING = 2;
-    public static final String DEVELOPER_KEY = "AIzaSyDu0bZbe6-yhiN4lpSVLaOcdwAoj7T6IMc";
 
 	// Standard Debugging variables
 	private static final String TAG = "YoutubeplayerModule";
@@ -54,14 +53,14 @@ public class YoutubeplayerModule extends KrollModule {
 
 	// Methods
 	@Kroll.method
-	public void playVideo(String videoId) {
+	public void playVideo(String developerKey, String videoId) {
 		if (videoId == null || videoId.length() == 0) {
 			return;
 		}
 
 		Activity activity = TiApplication.getAppRootOrCurrentActivity();
         
-        Intent intent = YouTubeStandalonePlayer.createVideoIntent(activity, DEVELOPER_KEY, videoId, 0, true, false);
+        Intent intent = YouTubeStandalonePlayer.createVideoIntent(activity, developerKey, videoId, 0, true, false);
         
         if (intent != null) {
             if (canResolveIntent(intent)) {

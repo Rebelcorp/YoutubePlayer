@@ -2,3 +2,10 @@ tmp
 bin
 build
 .apt_generated
+
+/.DS_Store
+/dist/titutorial.youtubeplayer-android-0.1.zip
+/dist/youtubeplayer.jar
+/libs/armeabi-v7a/libtitutorial.youtubeplayer.so
+/libs/armeabi/libtitutorial.youtubeplayer.so
+/libs/x86/libtitutorial.youtubeplayer.so

@@ -10,8 +10,7 @@
 		<manifest>
 			<application>
 				<activity
-				android:name="com.keyes.youtube.OpenYouTubePlayerActivity"
-				android:screenOrientation="landscape" >
+				android:name="com.keyes.youtube.OpenYouTubePlayerActivity">
 				</activity>
 			</application>
 			<uses-permission android:name="android.permission.INTERNET" />
