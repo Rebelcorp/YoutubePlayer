@@ -9,3 +9,5 @@ build
 /libs/armeabi-v7a/libtitutorial.youtubeplayer.so
 /libs/armeabi/libtitutorial.youtubeplayer.so
 /libs/x86/libtitutorial.youtubeplayer.so
+
+/build.properties
