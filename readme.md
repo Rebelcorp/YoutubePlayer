@@ -2,24 +2,31 @@
 
 ## Description
 
-Android component that plays videos from YouTube. This module is focused on creating an Android activity that allows developers to play videos that are hosted on YouTube
+Android module that plays videos from YouTube. This module creates an Android activity that allows developers to play videos that are hosted on YouTube. It uses the native Android Youtube SDK to play videos use the player provided by the native Youtube app. If the Youtube app is not installed it falls back to the Android YouTube Player (http://code.google.com/p/android-youtube-player/) library.
 
-**NOTE: If module unable to get the RTSP url from YouTube server, then video cannot be played.**
+## Referencing the module in your Titanium Mobile application ##
 
-## Accessing the youtubeplayer Module
+Simply add the following lines to your `tiapp.xml` file:
 
-To access this module from JavaScript, you would do the following:
+```xml    
+    <modules>
+        <module platform="iphone">titutorial.youtubeplayer</module> 
+        <module platform="android">titutorial.youtubeplayer</module> 
+    </modules>
+```
+
+## Example
+
+Put the following code in your app.js (or alloy.js if you are using Alloy) to use the module.
+
 ```javascript
 var youtubePlayer = require("titutorial.youtubeplayer");
 youtubePlayer.developerKey = 'abcdefghijklmnopq';
+
+youtubePlayer.playVideo('kh29_SERH0Y');
 ```
-The youtubeplayer variable is a reference to the Module object.
 
-TInformation on how to obtain a  developer key can be found on: https://developers.google.com/youtube/android/player/register
-
-## Reference
-
-This module based on Android YouTube Player(http://code.google.com/p/android-youtube-player/) library.
+Information on how to obtain a  developer key can be found on: https://developers.google.com/youtube/android/player/register
 
 ## Methods
 
@@ -31,51 +38,6 @@ Takes video id as input parameter and plays video automatcally.
 
 Takes playlist id as input parameter then it will play the latest video added to a YouTube playlist
 
-## Usage
-```javascript
-var win = Ti.UI.createWindow({
-	backgroundColor : "#fff",
-	layout : "vertical"
-});
-
-var youtubePlayer = require('titutorial.youtubeplayer');
-Ti.API.info("module is => " + youtubePlayer);
-/*
- * Play video by videoId
- */
-var playVideo = Ti.UI.createButton({
-	title : 'Play video',
-	height : '40dp',
-	width : Ti.UI.SIZE,
-	top : '100dp'
-});
-win.add(playVideo);
-
-playVideo.addEventListener('click', function() {
-	youtubePlayer.playVideo("FjMs_imWkFM");
-});
-
-/*
- * Play video by playListId
- */
-var playPlayListVideo = Ti.UI.createButton({
-	title : 'Play playlist video',
-	height : '40dp',
-	width : Ti.UI.SIZE,
-	top : '100dp'
-});
-
-playPlayListVideo.addEventListener('click', function() {
-	youtubePlayer.playPlayListVideo("PLB03EA9545DD188C3");
-});
-
-win.add(playPlayListVideo);
-
-win.open();
-```
-
-###Screenshot
-![Video Screenshot](https://github.com/railskarthi/YoutubePlayer-Android/blob/master/screens/screenshot.png?width=480&height=320&raw=true "Optional title")
 
 ## Author
 
